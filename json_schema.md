@@ -83,3 +83,34 @@ OR
   }
 }
 ```
+
+### Create New Worker's Vacation Request
+
+`POST /api/v1/workers/:id/requests`
+
+`Successful Vacation Request Creation:`
+```json
+{
+  "data": {
+    "id": 1,
+    "type": "vacation_request",
+    "attributes": {
+      "author": 3,
+      "status": "pending",
+      "resolved_by": null,
+      "request_created_at": "2020-08-09T12:57:13.506Z",
+      "vacation_start_date": "2020-08-24T00:00:00.000Z",
+      "vacation_end_date": "2020-09-04T00:00:00.000Z"
+    }
+  }
+}
+```
+
+`Unsuccessful Vacation Request Creation:`
+```json
+{
+  "data": {
+    "error": "Please check start and end date to see if they're valid."
+  }
+}
+```
