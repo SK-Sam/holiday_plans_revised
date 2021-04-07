@@ -15,7 +15,7 @@ class Manager < ApplicationRecord
     .distinct
   end
 
-  def get_overlapping_vacation_requests
+  def self.get_overlapping_vacation_requests
     sql = "SELECT day_1.* FROM vacation_requests day_1 WHERE EXISTS(
       SELECT 1 FROM vacation_requests day_2 WHERE
       tstzrange(day_2.start_date, day_2.end_date, '[]') &&
