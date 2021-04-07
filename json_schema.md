@@ -165,7 +165,7 @@ OR
 
 Manager can see a worker's attributes
 
-`GET /api/v1/managers/:id/worker/:worker_id`
+`GET /api/v1//managers/worker_details/:worker_id`
 
 ```json
 {
@@ -175,8 +175,7 @@ Manager can see a worker's attributes
     "attributes": {
         "vacation_days_remaining": 28,
         "requests_remaining": 30,
-        "hired_at": "2020-08-09T12:57:13.506Z",
-        "request_created_at": "2020-08-09T12:57:13.506Z",
+        "hired_at": "2020-08-09T12:57:13.506Z"
     }
   }
 }
