@@ -19,7 +19,7 @@ describe 'Manager can request for their workers vacation requests' do
     json_data = JSON.parse(response.body, symbolize_names: true)[:data]
 
     expect(json_data[:attributes][:requests].size).to eq(4)
-    expect(json_data[:attributes][:requests].first).to have_key(:start_date)
+    expect(json_data[:attributes][:requests].first).to have_key(:vacation_start_date)
   end
   it 'can filter workers vacation requests based on status filter' do
     get "/api/v1/managers/#{@manager.id}/vacation_requests?status=approved"
