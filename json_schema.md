@@ -68,3 +68,18 @@ OR
   }
 }
 ```
+
+### Check Worker's Remaining Vacation Days
+
+`GET /api/v1/workers/:id/vacation_days`
+```json
+{
+  "data": {
+    "id": null,
+    "type": "remaining_vacation_days",
+    "attributes":{
+      "remaining_days": 25
+    }
+  }
+}
+```
