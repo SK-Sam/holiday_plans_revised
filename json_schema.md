@@ -114,3 +114,49 @@ OR
   }
 }
 ```
+
+## Manager Based Requests
+
+### See All Vacation Requests
+
+Manager can see their worker's requests. Decision made to limit worker requests shown based on manager's request due to `Overlapping Vacation` Requests request existing.
+
+Optional filter by `status`, default set to ALL vacation requests.
+
+Statuses include: `pending`, `approved`.
+
+`GET /api/v1/managers/:id/vacation_requests`
+
+OR
+
+`GET /api/v1/managers/:id/vacation_requests?status=pending`
+
+```json
+{
+  "data":{
+    "id": null,
+    "type": "vacation_requests",
+    "attributes": {
+      "vacation_requests": [
+        "id": 1,
+          "author": 3,
+          "status": "pending",
+          "resolved_by": null,
+          "request_created_at": "2020-08-09T12:57:13.506Z",
+          "vacation_start_date": "2020-08-24T00:00:00.000Z",
+          "vacation_end_date": "2020-09-04T00:00:00.000Z"
+        },
+        {
+          "id": 2,
+          "author": 3,
+          "status": "approved",
+          "resolved_by": 5,
+          "request_created_at": "2020-08-09T12:57:13.506Z",
+          "vacation_start_date": "2020-08-24T00:00:00.000Z",
+          "vacation_end_date": "2020-09-04T00:00:00.000Z"
+        },
+      ]
+  }
+}
+
+```
