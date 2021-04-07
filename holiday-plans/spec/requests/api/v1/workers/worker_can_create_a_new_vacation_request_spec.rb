@@ -22,4 +22,15 @@ describe 'Workers can create a new vacation request' do
     expect(json_data[:attributes][:start_date]).to eq(vacation_request.start_date)
     expect(json_data[:attributes][:end_date]).to eq(vacation_request.end_date)
   end
+  it 'can invalidate a request for bad dates' do
+    post "/api/v1/workers/1/requests?start_date=2022-08-24T00:00:00.000Z&end_date=2022-08-28T00:00:00.000Z"
+
+    vacation_request = VacationRequest.first
+
+    expect(response.status).to eq(409)
+
+    json_data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(json_data[:error]).to eq("Please check start and end date to see if they're valid.")
+  end
 end
