@@ -18,4 +18,9 @@ class Api::V1::ManagersController < ApplicationController
 
     render json: {message: "Status updated to #{vacation_request.status}"}, status: 204
   end
+
+  def get_overlapping_requests
+    overlapping_days = Manager.get_overlapping_vacation_requests
+    render json: overlapping_days
+  end
 end
