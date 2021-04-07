@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_07_112727) do
+ActiveRecord::Schema.define(version: 2021_04_07_113904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_112727) do
   create_table "vacation_requests", force: :cascade do |t|
     t.datetime "start_date"
     t.datetime "end_date"
-    t.string "status"
+    t.string "status", default: "pending"
     t.bigint "worker_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 2021_04_07_112727) do
   end
 
   create_table "workers", force: :cascade do |t|
-    t.integer "vacation_days_remaining"
-    t.integer "requests_remaining"
+    t.integer "vacation_days_remaining", default: 28
+    t.integer "requests_remaining", default: 30
     t.bigint "manager_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
