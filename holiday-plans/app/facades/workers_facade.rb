@@ -14,5 +14,13 @@ class WorkersFacade
       worker = Worker.find(id)
       VacationDays.new(worker)
     end
+
+    def create_worker_vacation_request(id, start_date, end_date)
+      worker = Worker.find(id)
+      vacation_request = worker.vacation_requests.new(
+        start_date: start_date,
+        end_date: end_date
+      )
+    end
   end
 end
