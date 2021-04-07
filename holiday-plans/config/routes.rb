@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
       get '/managers/:id/vacation_requests', to: 'managers#vacation_requests'
       get '/managers/worker_details/:worker_id', to: 'managers#worker_details'
+      patch '/managers/:id/requests/:vacation_request_id', to: 'managers#approve_vacation_request'
     end
   end
 end
