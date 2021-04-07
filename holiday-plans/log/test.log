@@ -426,3 +426,249 @@ FOREIGN KEY ("manager_id")
   [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "vacation_requests" WHERE "vacation_requests"."worker_id" = $1 AND (status = 'pending')[0m  [["worker_id", 16]]
   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "vacation_requests" WHERE "vacation_requests"."worker_id" = $1 AND (status = 'approved')[0m  [["worker_id", 16]]
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.7ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 12:27:25.941141"], ["updated_at", "2021-04-07 12:27:25.941141"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (4.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (1.7ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 17], ["created_at", "2021-04-07 12:27:25.963247"], ["updated_at", "2021-04-07 12:27:25.963247"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (1.4ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-08 00:00:00"], ["end_date", "2021-04-09 00:00:00"], ["worker_id", 17], ["created_at", "2021-04-07 12:27:25.967783"], ["updated_at", "2021-04-07 12:27:25.967783"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.4ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 12:27:25.975514"], ["updated_at", "2021-04-07 12:27:25.975514"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.6ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 18], ["created_at", "2021-04-07 12:27:25.978530"], ["updated_at", "2021-04-07 12:27:25.978530"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.4ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 12:27:25.983836"], ["updated_at", "2021-04-07 12:27:25.983836"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.5ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 19], ["created_at", "2021-04-07 12:27:25.986444"], ["updated_at", "2021-04-07 12:27:25.986444"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.4ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-27 00:00:00"], ["end_date", "2021-05-02 00:00:00"], ["worker_id", 19], ["created_at", "2021-04-07 12:27:25.989095"], ["updated_at", "2021-04-07 12:27:25.989095"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.4ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-05-07 00:00:00"], ["end_date", "2021-05-14 00:00:00"], ["worker_id", 19], ["created_at", "2021-04-07 12:27:25.991064"], ["updated_at", "2021-04-07 12:27:25.991064"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-05-01 00:00:00"], ["end_date", "2021-05-05 00:00:00"], ["worker_id", 19], ["created_at", "2021-04-07 12:27:25.992893"], ["updated_at", "2021-04-07 12:27:25.992893"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "vacation_requests" WHERE "vacation_requests"."worker_id" = $1[0m  [["worker_id", 19]]
+  [1m[36mVacationRequest Load (0.7ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."worker_id" = $1 ORDER BY created_at ASC LIMIT $2[0m  [["worker_id", 19], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "vacation_requests" WHERE "vacation_requests"."worker_id" = $1 AND (status = 'pending')[0m  [["worker_id", 19]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "vacation_requests" WHERE "vacation_requests"."worker_id" = $1 AND (status = 'approved')[0m  [["worker_id", 19]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.3ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 12:27:26.003035"], ["updated_at", "2021-04-07 12:27:26.003035"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.4ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 20], ["created_at", "2021-04-07 12:27:26.004861"], ["updated_at", "2021-04-07 12:27:26.004861"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.5ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 20], ["created_at", "2021-04-07 12:27:26.006372"], ["updated_at", "2021-04-07 12:27:26.006372"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.4ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-27 00:00:00"], ["end_date", "2021-05-07 00:00:00"], ["worker_id", 20], ["created_at", "2021-04-07 12:27:26.008520"], ["updated_at", "2021-04-07 12:27:26.008520"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.5ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-05-02 00:00:00"], ["end_date", "2021-05-12 00:00:00"], ["worker_id", 20], ["created_at", "2021-04-07 12:27:26.010439"], ["updated_at", "2021-04-07 12:27:26.010439"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-08 00:00:00"], ["end_date", "2021-04-10 00:00:00"], ["worker_id", 21], ["created_at", "2021-04-07 12:27:26.012367"], ["updated_at", "2021-04-07 12:27:26.012367"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.9ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-09 00:00:00"], ["end_date", "2021-04-11 00:00:00"], ["worker_id", 21], ["created_at", "2021-04-07 12:27:26.013923"], ["updated_at", "2021-04-07 12:27:26.013923"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/v1/workers/20/vacation_requests" for 127.0.0.1 at 2021-04-07 06:27:26 -0600
+Processing by Api::V1::WorkersController#vacation_requests as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mWorker Load (0.2ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mVacationRequest Load (0.2ms)[0m  [1m[34mSELECT "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."worker_id" = $1 ORDER BY created_at ASC[0m  [["worker_id", 20]]
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.2ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 12:27:26.039628"], ["updated_at", "2021-04-07 12:27:26.039628"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.5ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 21], ["created_at", "2021-04-07 12:27:26.041239"], ["updated_at", "2021-04-07 12:27:26.041239"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.2ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 21], ["created_at", "2021-04-07 12:27:26.042995"], ["updated_at", "2021-04-07 12:27:26.042995"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-27 00:00:00"], ["end_date", "2021-05-07 00:00:00"], ["worker_id", 22], ["created_at", "2021-04-07 12:27:26.044942"], ["updated_at", "2021-04-07 12:27:26.044942"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-05-02 00:00:00"], ["end_date", "2021-05-12 00:00:00"], ["worker_id", 22], ["created_at", "2021-04-07 12:27:26.046721"], ["updated_at", "2021-04-07 12:27:26.046721"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.2ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-08 00:00:00"], ["end_date", "2021-04-10 00:00:00"], ["worker_id", 23], ["created_at", "2021-04-07 12:27:26.048274"], ["updated_at", "2021-04-07 12:27:26.048274"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-09 00:00:00"], ["end_date", "2021-04-11 00:00:00"], ["worker_id", 23], ["created_at", "2021-04-07 12:27:26.049802"], ["updated_at", "2021-04-07 12:27:26.049802"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/v1/workers/22/vacation_requests?status=approved" for 127.0.0.1 at 2021-04-07 06:27:26 -0600
+Processing by Api::V1::WorkersController#vacation_requests as HTML
+  Parameters: {"status"=>"approved", "id"=>"22"}
+  [1m[36mWorker Load (0.2ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mVacationRequest Load (0.4ms)[0m  [1m[34mSELECT "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."worker_id" = $1 AND (status = 'approved') ORDER BY created_at ASC[0m  [["worker_id", 22]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.2ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 12:27:26.055788"], ["updated_at", "2021-04-07 12:27:26.055788"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.2ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 22], ["created_at", "2021-04-07 12:27:26.057354"], ["updated_at", "2021-04-07 12:27:26.057354"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.2ms)[0m  [1m[32mINSERT INTO "workers" ("vacation_days_remaining", "manager_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vacation_days_remaining", 1], ["manager_id", 22], ["created_at", "2021-04-07 12:27:26.058552"], ["updated_at", "2021-04-07 12:27:26.058552"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/v1/workers/25/vacation_days" for 127.0.0.1 at 2021-04-07 06:27:26 -0600
+Processing by Api::V1::WorkersController#vacation_days as HTML
+  Parameters: {"id"=>"25"}
+  [1m[36mWorker Load (0.2ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.6ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 12:28:00.294284"], ["updated_at", "2021-04-07 12:28:00.294284"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (1.0ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 23], ["created_at", "2021-04-07 12:28:00.310168"], ["updated_at", "2021-04-07 12:28:00.310168"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.7ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-08 00:00:00"], ["end_date", "2021-04-09 00:00:00"], ["worker_id", 26], ["created_at", "2021-04-07 12:28:00.319417"], ["updated_at", "2021-04-07 12:28:00.319417"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.2ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 12:28:00.323797"], ["updated_at", "2021-04-07 12:28:00.323797"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.4ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 24], ["created_at", "2021-04-07 12:28:00.325250"], ["updated_at", "2021-04-07 12:28:00.325250"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.2ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 12:28:00.327324"], ["updated_at", "2021-04-07 12:28:00.327324"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.3ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 25], ["created_at", "2021-04-07 12:28:00.328557"], ["updated_at", "2021-04-07 12:28:00.328557"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-27 00:00:00"], ["end_date", "2021-05-02 00:00:00"], ["worker_id", 28], ["created_at", "2021-04-07 12:28:00.330053"], ["updated_at", "2021-04-07 12:28:00.330053"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-05-07 00:00:00"], ["end_date", "2021-05-14 00:00:00"], ["worker_id", 28], ["created_at", "2021-04-07 12:28:00.331406"], ["updated_at", "2021-04-07 12:28:00.331406"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-05-01 00:00:00"], ["end_date", "2021-05-05 00:00:00"], ["worker_id", 28], ["created_at", "2021-04-07 12:28:00.332810"], ["updated_at", "2021-04-07 12:28:00.332810"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "vacation_requests" WHERE "vacation_requests"."worker_id" = $1[0m  [["worker_id", 28]]
+  [1m[36mVacationRequest Load (0.5ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."worker_id" = $1 ORDER BY created_at ASC LIMIT $2[0m  [["worker_id", 28], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "vacation_requests" WHERE "vacation_requests"."worker_id" = $1 AND (status = 'pending')[0m  [["worker_id", 28]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "vacation_requests" WHERE "vacation_requests"."worker_id" = $1 AND (status = 'approved')[0m  [["worker_id", 28]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.2ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 12:28:00.340261"], ["updated_at", "2021-04-07 12:28:00.340261"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.3ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 26], ["created_at", "2021-04-07 12:28:00.341643"], ["updated_at", "2021-04-07 12:28:00.341643"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.3ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 26], ["created_at", "2021-04-07 12:28:00.342832"], ["updated_at", "2021-04-07 12:28:00.342832"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-27 00:00:00"], ["end_date", "2021-05-07 00:00:00"], ["worker_id", 29], ["created_at", "2021-04-07 12:28:00.344401"], ["updated_at", "2021-04-07 12:28:00.344401"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-05-02 00:00:00"], ["end_date", "2021-05-12 00:00:00"], ["worker_id", 29], ["created_at", "2021-04-07 12:28:00.345798"], ["updated_at", "2021-04-07 12:28:00.345798"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.2ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-08 00:00:00"], ["end_date", "2021-04-10 00:00:00"], ["worker_id", 30], ["created_at", "2021-04-07 12:28:00.347326"], ["updated_at", "2021-04-07 12:28:00.347326"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-09 00:00:00"], ["end_date", "2021-04-11 00:00:00"], ["worker_id", 30], ["created_at", "2021-04-07 12:28:00.348615"], ["updated_at", "2021-04-07 12:28:00.348615"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/v1/workers/29/vacation_requests" for 127.0.0.1 at 2021-04-07 06:28:00 -0600
+Processing by Api::V1::WorkersController#vacation_requests as HTML
+  Parameters: {"id"=>"29"}
+  [1m[36mWorker Load (0.2ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[36mVacationRequest Load (0.3ms)[0m  [1m[34mSELECT "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."worker_id" = $1 ORDER BY created_at ASC[0m  [["worker_id", 29]]
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.2ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 12:28:00.369692"], ["updated_at", "2021-04-07 12:28:00.369692"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.3ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 27], ["created_at", "2021-04-07 12:28:00.371484"], ["updated_at", "2021-04-07 12:28:00.371484"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.3ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 27], ["created_at", "2021-04-07 12:28:00.372976"], ["updated_at", "2021-04-07 12:28:00.372976"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-27 00:00:00"], ["end_date", "2021-05-07 00:00:00"], ["worker_id", 31], ["created_at", "2021-04-07 12:28:00.374808"], ["updated_at", "2021-04-07 12:28:00.374808"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-05-02 00:00:00"], ["end_date", "2021-05-12 00:00:00"], ["worker_id", 31], ["created_at", "2021-04-07 12:28:00.376379"], ["updated_at", "2021-04-07 12:28:00.376379"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-08 00:00:00"], ["end_date", "2021-04-10 00:00:00"], ["worker_id", 32], ["created_at", "2021-04-07 12:28:00.377844"], ["updated_at", "2021-04-07 12:28:00.377844"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-09 00:00:00"], ["end_date", "2021-04-11 00:00:00"], ["worker_id", 32], ["created_at", "2021-04-07 12:28:00.379535"], ["updated_at", "2021-04-07 12:28:00.379535"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/v1/workers/31/vacation_requests?status=approved" for 127.0.0.1 at 2021-04-07 06:28:00 -0600
+Processing by Api::V1::WorkersController#vacation_requests as HTML
+  Parameters: {"status"=>"approved", "id"=>"31"}
+  [1m[36mWorker Load (0.2ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mVacationRequest Load (0.3ms)[0m  [1m[34mSELECT "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."worker_id" = $1 AND (status = 'approved') ORDER BY created_at ASC[0m  [["worker_id", 31]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.3ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 12:28:00.384917"], ["updated_at", "2021-04-07 12:28:00.384917"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.2ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 28], ["created_at", "2021-04-07 12:28:00.386501"], ["updated_at", "2021-04-07 12:28:00.386501"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.2ms)[0m  [1m[32mINSERT INTO "workers" ("vacation_days_remaining", "manager_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["vacation_days_remaining", 1], ["manager_id", 28], ["created_at", "2021-04-07 12:28:00.387752"], ["updated_at", "2021-04-07 12:28:00.387752"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/v1/workers/34/vacation_days" for 127.0.0.1 at 2021-04-07 06:28:00 -0600
+Processing by Api::V1::WorkersController#vacation_days as HTML
+  Parameters: {"id"=>"34"}
+  [1m[36mWorker Load (0.2ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m

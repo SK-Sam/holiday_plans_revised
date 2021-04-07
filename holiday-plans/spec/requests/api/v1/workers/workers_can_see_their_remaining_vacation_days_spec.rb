@@ -13,6 +13,6 @@ describe 'Workers can request for remaining vacation days' do
 
     json_data = JSON.parse(response.body, symbolize_names: true)[:data]
 
-    expect(json_data[:attributes][:remaining_days]).to eq(@worker_2.vacation_days_remaining)
+    expect(json_data[:attributes][:remaining_vacation_days]).to eq(@worker_2.vacation_days_remaining)
   end
 end
