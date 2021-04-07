@@ -132,3 +132,70 @@ Migrating to ChangeVacationRequestStatusToHaveDefaultVals (20210407113904)
   ↳ bin/rails:4
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:4
+Started GET "/api/v1/workers/1/vacation_requests" for ::1 at 2021-04-07 05:58:09 -0600
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sksam/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::WorkersController#vacation_requests as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mWorker Load (7.3ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/workers_controller.rb:4
+Completed 404 Not Found in 24ms (ActiveRecord: 13.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Worker with 'id'=1):
+  
+app/controllers/api/v1/workers_controller.rb:4:in `vacation_requests'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mManager Create (4.7ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 11:58:26.028219"], ["updated_at", "2021-04-07 11:58:26.028219"]]
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWorker Create (1.4ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 1], ["created_at", "2021-04-07 11:58:34.172202"], ["updated_at", "2021-04-07 11:58:34.172202"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWorker Create (0.9ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 1], ["created_at", "2021-04-07 11:58:35.205620"], ["updated_at", "2021-04-07 11:58:35.205620"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWorker Load (0.5ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" ORDER BY "workers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVacationRequest Create (6.4ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-27 00:00:00"], ["end_date", "2021-05-04 00:00:00"], ["worker_id", 1], ["created_at", "2021-04-07 11:59:25.997770"], ["updated_at", "2021-04-07 11:59:25.997770"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVacationRequest Create (0.8ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-29 00:00:00"], ["end_date", "2021-05-06 00:00:00"], ["worker_id", 1], ["created_at", "2021-04-07 11:59:40.393806"], ["updated_at", "2021-04-07 11:59:40.393806"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVacationRequest Create (0.8ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-05-22 00:00:00"], ["end_date", "2021-05-27 00:00:00"], ["worker_id", 1], ["created_at", "2021-04-07 11:59:53.842138"], ["updated_at", "2021-04-07 11:59:53.842138"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/workers/1/vacation_requests" for ::1 at 2021-04-07 06:00:03 -0600
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sksam/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::WorkersController#vacation_requests as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mWorker Load (0.5ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/workers_controller.rb:4
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 6.2ms)
+
+
+  
+NoMethodError (undefined method `get_vacation_requests' for #<Worker:0x00007ff9b7595548>):
+  
+app/controllers/api/v1/workers_controller.rb:5:in `vacation_requests'
+Started GET "/api/v1/workers/1/vacation_requests" for ::1 at 2021-04-07 06:00:45 -0600
+Processing by Api::V1::WorkersController#vacation_requests as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/workers_controller.rb:4
+  [1m[36mVacationRequest Load (1.2ms)[0m  [1m[34mSELECT "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."worker_id" = $1 ORDER BY created_at ASC[0m  [["worker_id", 1]]
+  ↳ app/controllers/api/v1/workers_controller.rb:6
+Completed 200 OK in 57ms (Views: 0.6ms | ActiveRecord: 14.1ms)
+
+
+Started GET "/api/v1/workers/1/vacation_requests?status=approved" for ::1 at 2021-04-07 06:01:04 -0600
+Processing by Api::V1::WorkersController#vacation_requests as */*
+  Parameters: {"status"=>"approved", "id"=>"1"}
+  [1m[36mWorker Load (0.3ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/workers_controller.rb:4
+  [1m[36mVacationRequest Load (0.6ms)[0m  [1m[34mSELECT "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."worker_id" = $1 AND (status = 'approved') ORDER BY created_at ASC[0m  [["worker_id", 1]]
+  ↳ app/controllers/api/v1/workers_controller.rb:6
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
