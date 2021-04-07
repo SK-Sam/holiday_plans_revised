@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       post '/workers/:id/requests', to: 'workers#create_vacation_request'
 
       get '/managers/:id/vacation_requests', to: 'managers#vacation_requests'
+      get '/managers/worker_details/:worker_id', to: 'managers#worker_details'
     end
   end
 end
