@@ -1,0 +1,134 @@
+  [1m[35m (241.7ms)[0m  [1m[35mCREATE DATABASE "holiday-plans_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:4
+  [1m[35m (94.1ms)[0m  [1m[35mCREATE DATABASE "holiday-plans_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:4
+  [1m[35m (33.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:4
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4743423908429805060)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateManagers (20210407111857)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE TABLE "managers" ("id" bigserial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210407111857_create_managers.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210407111857"]]
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-04-07 11:19:56.766432"], ["updated_at", "2021-04-07 11:19:56.766432"]]
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4743423908429805060)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4743423908429805060)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateWorkers (20210407112444)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (23.0ms)[0m  [1m[35mCREATE TABLE "workers" ("id" bigserial primary key, "vacation_days_remaining" integer, "requests_remaining" integer, "manager_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_03e9fe7b99"
+FOREIGN KEY ("manager_id")
+  REFERENCES "managers" ("id")
+)[0m
+  ↳ db/migrate/20210407112444_create_workers.rb:3
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_workers_on_manager_id" ON "workers"  ("manager_id")[0m
+  ↳ db/migrate/20210407112444_create_workers.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210407112444"]]
+  ↳ bin/rails:4
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+Migrating to CreateVacationRequests (20210407112727)
+  [1m[35m (4.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "vacation_requests" ("id" bigserial primary key, "start_date" timestamp, "end_date" timestamp, "status" character varying, "worker_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_f09162c52c"
+FOREIGN KEY ("worker_id")
+  REFERENCES "workers" ("id")
+)[0m
+  ↳ db/migrate/20210407112727_create_vacation_requests.rb:3
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_vacation_requests_on_worker_id" ON "vacation_requests"  ("worker_id")[0m
+  ↳ db/migrate/20210407112727_create_vacation_requests.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210407112727"]]
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(4743423908429805060)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4743423908429805060)[0m
+  ↳ bin/rails:4
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to ChangeWorkerColumnsToHaveDefaultVals (20210407113416)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4743423908429805060)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4743423908429805060)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to ChangeWorkerColumnsToHaveDefaultVals (20210407113416)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (4.9ms)[0m  [1m[35mALTER TABLE "workers" ALTER COLUMN "vacation_days_remaining" TYPE integer, ALTER COLUMN "vacation_days_remaining" SET DEFAULT 28[0m
+  ↳ db/migrate/20210407113416_change_worker_columns_to_have_default_vals.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "workers" ALTER COLUMN "requests_remaining" TYPE integer, ALTER COLUMN "requests_remaining" SET DEFAULT 30[0m
+  ↳ db/migrate/20210407113416_change_worker_columns_to_have_default_vals.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210407113416"]]
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4743423908429805060)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4743423908429805060)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to ChangeVacationRequestStatusToHaveDefaultVals (20210407113904)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "vacation_requests" ALTER COLUMN "status" TYPE character varying, ALTER COLUMN "status" SET DEFAULT 'pending'[0m
+  ↳ db/migrate/20210407113904_change_vacation_request_status_to_have_default_vals.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210407113904"]]
+  ↳ bin/rails:4
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4743423908429805060)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4

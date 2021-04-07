@@ -1,0 +1,257 @@
+  [1m[35m (35.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "holiday-plans_test"[0m
+  [1m[35m (253.8ms)[0m  [1m[35mCREATE DATABASE "holiday-plans_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "managers" CASCADE[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "managers" ("id" bigserial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "vacation_requests" CASCADE[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "vacation_requests" ("id" bigserial primary key, "start_date" timestamp, "end_date" timestamp, "status" character varying, "worker_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_vacation_requests_on_worker_id" ON "vacation_requests"  ("worker_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "workers" CASCADE[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "workers" ("id" bigserial primary key, "vacation_days_remaining" integer, "requests_remaining" integer, "manager_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_workers_on_manager_id" ON "workers"  ("manager_id")[0m
+  [1m[35m (3.7ms)[0m  [1m[35mALTER TABLE "vacation_requests" ADD CONSTRAINT "fk_rails_f09162c52c"
+FOREIGN KEY ("worker_id")
+  REFERENCES "workers" ("id")
+[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "workers" ADD CONSTRAINT "fk_rails_03e9fe7b99"
+FOREIGN KEY ("manager_id")
+  REFERENCES "managers" ("id")
+[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210407112727)[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210407112444),
+(20210407111857);
+
+[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-04-07 11:30:54.410337"], ["updated_at", "2021-04-07 11:30:54.410337"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (1.4ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 11:31:13.280983"], ["updated_at", "2021-04-07 11:31:13.280983"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (1.6ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 1], ["created_at", "2021-04-07 11:31:13.299385"], ["updated_at", "2021-04-07 11:31:13.299385"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (1.2ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-08 00:00:00"], ["end_date", "2021-04-09 00:00:00"], ["worker_id", 1], ["created_at", "2021-04-07 11:31:13.305240"], ["updated_at", "2021-04-07 11:31:13.305240"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.2ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 11:31:13.328592"], ["updated_at", "2021-04-07 11:31:13.328592"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.3ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 2], ["created_at", "2021-04-07 11:31:13.330243"], ["updated_at", "2021-04-07 11:31:13.330243"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (43.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "holiday-plans_test"[0m
+  [1m[35m (187.2ms)[0m  [1m[35mCREATE DATABASE "holiday-plans_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "managers" CASCADE[0m
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE TABLE "managers" ("id" bigserial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "vacation_requests" CASCADE[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "vacation_requests" ("id" bigserial primary key, "start_date" timestamp, "end_date" timestamp, "status" character varying, "worker_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_vacation_requests_on_worker_id" ON "vacation_requests"  ("worker_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "workers" CASCADE[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "workers" ("id" bigserial primary key, "vacation_days_remaining" integer DEFAULT 28, "requests_remaining" integer DEFAULT 30, "manager_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_workers_on_manager_id" ON "workers"  ("manager_id")[0m
+  [1m[35m (3.6ms)[0m  [1m[35mALTER TABLE "vacation_requests" ADD CONSTRAINT "fk_rails_f09162c52c"
+FOREIGN KEY ("worker_id")
+  REFERENCES "workers" ("id")
+[0m
+  [1m[35m (2.5ms)[0m  [1m[35mALTER TABLE "workers" ADD CONSTRAINT "fk_rails_03e9fe7b99"
+FOREIGN KEY ("manager_id")
+  REFERENCES "managers" ("id")
+[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210407113416)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210407112727),
+(20210407112444),
+(20210407111857);
+
+[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-04-07 11:37:02.372171"], ["updated_at", "2021-04-07 11:37:02.372171"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.7ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 11:37:02.579111"], ["updated_at", "2021-04-07 11:37:02.579111"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (1.0ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 1], ["created_at", "2021-04-07 11:37:02.594513"], ["updated_at", "2021-04-07 11:37:02.594513"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.9ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-08 00:00:00"], ["end_date", "2021-04-09 00:00:00"], ["worker_id", 1], ["created_at", "2021-04-07 11:37:02.597791"], ["updated_at", "2021-04-07 11:37:02.597791"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.2ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 11:37:02.614020"], ["updated_at", "2021-04-07 11:37:02.614020"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.3ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 2], ["created_at", "2021-04-07 11:37:02.615659"], ["updated_at", "2021-04-07 11:37:02.615659"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.5ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 11:37:58.576965"], ["updated_at", "2021-04-07 11:37:58.576965"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.9ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 3], ["created_at", "2021-04-07 11:37:58.590109"], ["updated_at", "2021-04-07 11:37:58.590109"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.7ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-08 00:00:00"], ["end_date", "2021-04-09 00:00:00"], ["worker_id", 3], ["created_at", "2021-04-07 11:37:58.598420"], ["updated_at", "2021-04-07 11:37:58.598420"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.2ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 11:37:58.609747"], ["updated_at", "2021-04-07 11:37:58.609747"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.3ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 4], ["created_at", "2021-04-07 11:37:58.611366"], ["updated_at", "2021-04-07 11:37:58.611366"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (38.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "holiday-plans_test"[0m
+  [1m[35m (184.4ms)[0m  [1m[35mCREATE DATABASE "holiday-plans_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "managers" CASCADE[0m
+  [1m[35m (17.4ms)[0m  [1m[35mCREATE TABLE "managers" ("id" bigserial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "vacation_requests" CASCADE[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "vacation_requests" ("id" bigserial primary key, "start_date" timestamp, "end_date" timestamp, "status" character varying DEFAULT 'pending', "worker_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_vacation_requests_on_worker_id" ON "vacation_requests"  ("worker_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "workers" CASCADE[0m
+  [1m[35m (13.6ms)[0m  [1m[35mCREATE TABLE "workers" ("id" bigserial primary key, "vacation_days_remaining" integer DEFAULT 28, "requests_remaining" integer DEFAULT 30, "manager_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_workers_on_manager_id" ON "workers"  ("manager_id")[0m
+  [1m[35m (3.8ms)[0m  [1m[35mALTER TABLE "vacation_requests" ADD CONSTRAINT "fk_rails_f09162c52c"
+FOREIGN KEY ("worker_id")
+  REFERENCES "workers" ("id")
+[0m
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "workers" ADD CONSTRAINT "fk_rails_03e9fe7b99"
+FOREIGN KEY ("manager_id")
+  REFERENCES "managers" ("id")
+[0m
+  [1m[35m (16.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210407113904)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210407112727),
+(20210407112444),
+(20210407113416),
+(20210407111857);
+
+[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-04-07 11:39:40.393055"], ["updated_at", "2021-04-07 11:39:40.393055"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.7ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 11:39:40.600560"], ["updated_at", "2021-04-07 11:39:40.600560"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (1.1ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 1], ["created_at", "2021-04-07 11:39:40.614182"], ["updated_at", "2021-04-07 11:39:40.614182"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.9ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-08 00:00:00"], ["end_date", "2021-04-09 00:00:00"], ["worker_id", 1], ["created_at", "2021-04-07 11:39:40.617625"], ["updated_at", "2021-04-07 11:39:40.617625"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (5.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.3ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 11:39:40.628262"], ["updated_at", "2021-04-07 11:39:40.628262"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.4ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 2], ["created_at", "2021-04-07 11:39:40.630033"], ["updated_at", "2021-04-07 11:39:40.630033"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.5ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 11:40:17.700486"], ["updated_at", "2021-04-07 11:40:17.700486"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.8ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 3], ["created_at", "2021-04-07 11:40:17.718248"], ["updated_at", "2021-04-07 11:40:17.718248"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVacationRequest Create (0.8ms)[0m  [1m[32mINSERT INTO "vacation_requests" ("start_date", "end_date", "worker_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["start_date", "2021-04-08 00:00:00"], ["end_date", "2021-04-09 00:00:00"], ["worker_id", 3], ["created_at", "2021-04-07 11:40:17.721619"], ["updated_at", "2021-04-07 11:40:17.721619"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mManager Create (0.2ms)[0m  [1m[32mINSERT INTO "managers" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-04-07 11:40:17.726224"], ["updated_at", "2021-04-07 11:40:17.726224"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWorker Create (0.4ms)[0m  [1m[32mINSERT INTO "workers" ("manager_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["manager_id", 4], ["created_at", "2021-04-07 11:40:17.727842"], ["updated_at", "2021-04-07 11:40:17.727842"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
