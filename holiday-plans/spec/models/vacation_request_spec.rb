@@ -19,6 +19,7 @@ RSpec.describe VacationRequest, type: :model do
       expect(vacation_request.end_date).to eq(end_date)
       expect(vacation_request.status).to eq("pending")
       expect(vacation_request.worker_id).to eq(worker.id)
+      expect(vacation_request.resolved_by).to eq(nil)
 
       invalid_start_date = Date.current - 2
       invalid_end_date = Date.current - 1
