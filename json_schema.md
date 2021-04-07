@@ -138,7 +138,8 @@ OR
     "type": "vacation_requests",
     "attributes": {
       "vacation_requests": [
-        "id": 1,
+        {
+          "id": 1,
           "author": 3,
           "status": "pending",
           "resolved_by": null,
@@ -158,5 +159,25 @@ OR
       ]
   }
 }
+```
 
+### See A Worker's Information
+
+Manager can see a worker's attributes
+
+`GET /api/v1/managers/:id/worker/:worker_id`
+
+```json
+{
+  "data":{
+    "id": 1,
+    "type": "worker_overview",
+    "attributes": {
+        "vacation_days_remaining": 28,
+        "requests_remaining": 30,
+        "hired_at": "2020-08-09T12:57:13.506Z",
+        "request_created_at": "2020-08-09T12:57:13.506Z",
+    }
+  }
+}
 ```
