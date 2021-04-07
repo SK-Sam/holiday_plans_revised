@@ -1,6 +1,5 @@
 class WorkersFacade
   class << self
-
     def filter_worker_vacation_requests(id, status)
       worker = Worker.find(id)
       list_of_requests = worker.get_vacation_requests(status)
