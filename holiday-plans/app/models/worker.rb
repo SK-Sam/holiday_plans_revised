@@ -1,6 +1,6 @@
 class Worker < ApplicationRecord
   belongs_to :manager
-  has_many :vacation_requests
+  has_many :vacation_requests, dependent: :destroy
 
   def get_vacation_requests(status)
     return vacation_requests.order("created_at ASC") if status == nil || status == ""

@@ -222,3 +222,640 @@ Migrating to AddResolvedByColumnToVacationRequests (20210407124219)
   ↳ bin/rails:4
   [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:4
+  [1m[36mManager Load (0.4ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" ORDER BY "managers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mWorker Load (0.7ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."manager_id" = $1 LIMIT $2[0m  [["manager_id", 1], ["LIMIT", 11]]
+  [1m[36mWorker Load (0.5ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."manager_id" = $1 LIMIT $2[0m  [["manager_id", 1], ["LIMIT", 11]]
+  [1m[36mManager Load (5.3ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" INNER JOIN "workers" ON "workers"."manager_id" = "managers"."id" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mManager Load (1.7ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" INNER JOIN "workers" ON "workers"."manager_id" = "managers"."id" INNER JOIN "vacation_requests" ON "vacation_requests"."worker_id" = "workers"."id" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mManager Load (2.5ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" INNER JOIN "workers" ON "workers"."manager_id" = "managers"."id" INNER JOIN "vacation_requests" ON "vacation_requests"."worker_id" = "workers"."id" WHERE (workers.manager_id = 1) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mManager Load (2.8ms)[0m  [1m[34mSELECT  vacation_requests.* FROM "managers" INNER JOIN "workers" ON "workers"."manager_id" = "managers"."id" INNER JOIN "vacation_requests" ON "vacation_requests"."worker_id" = "workers"."id" WHERE (workers.manager_id = 1) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mManager Load (1.4ms)[0m  [1m[34mSELECT  vacation_requests.* FROM "managers" INNER JOIN "workers" ON "workers"."manager_id" = "managers"."id" INNER JOIN "vacation_requests" ON "vacation_requests"."worker_id" = "workers"."id" WHERE (workers.manager_id = 1) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mManager Load (1.0ms)[0m  [1m[34mSELECT  vacation_requests.* AS vacation_requests FROM "managers" INNER JOIN "workers" ON "workers"."manager_id" = "managers"."id" INNER JOIN "vacation_requests" ON "vacation_requests"."worker_id" = "workers"."id" WHERE (workers.manager_id = 1) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mManager Load (1.2ms)[0m  [1m[34mSELECT  vacation_requests.* FROM "managers" INNER JOIN "workers" ON "workers"."manager_id" = "managers"."id" INNER JOIN "vacation_requests" ON "vacation_requests"."worker_id" = "workers"."id" WHERE (workers.manager_id = 1) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mManager Load (0.4ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" ORDER BY "managers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mManager Load (0.4ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" ORDER BY "managers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mVacationRequest Load (3.0ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" INNER JOIN "workers" ON "workers"."id" = "vacation_requests"."worker_id" INNER JOIN "vacation_requests" "vacation_requests_workers" ON "vacation_requests_workers"."worker_id" = "workers"."id" WHERE (workers.manager_id = 1) ORDER BY created_at ASC LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mManager Load (0.4ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" ORDER BY "managers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mVacationRequest Load (2.4ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" INNER JOIN "workers" ON "workers"."id" = "vacation_requests"."worker_id" INNER JOIN "vacation_requests" "vacation_requests_workers" ON "vacation_requests_workers"."worker_id" = "workers"."id" WHERE (workers.manager_id = 1) ORDER BY created_at ASC LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mVacationRequest Load (6.3ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" INNER JOIN "workers" ON "workers"."id" = "vacation_requests"."worker_id" INNER JOIN "vacation_requests" "vacation_requests_workers" ON "vacation_requests_workers"."worker_id" = "workers"."id" WHERE (workers.manager_id = 1) AND (status = 'approved') ORDER BY created_at ASC LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mManager Load (0.6ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" ORDER BY "managers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mVacationRequest Load (2.0ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" INNER JOIN "workers" ON "workers"."id" = "vacation_requests"."worker_id" INNER JOIN "vacation_requests" "vacation_requests_workers" ON "vacation_requests_workers"."worker_id" = "workers"."id" WHERE (workers.manager_id = 1) ORDER BY created_at ASC LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mVacationRequest Load (1.8ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" INNER JOIN "workers" ON "workers"."id" = "vacation_requests"."worker_id" INNER JOIN "vacation_requests" "vacation_requests_workers" ON "vacation_requests_workers"."worker_id" = "workers"."id" WHERE (workers.manager_id = 1) AND (vacations.status = 'approved') ORDER BY created_at ASC LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mManager Load (0.3ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" ORDER BY "managers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mVacationRequest Load (2.6ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" INNER JOIN "workers" ON "workers"."id" = "vacation_requests"."worker_id" INNER JOIN "vacation_requests" "vacation_requests_workers" ON "vacation_requests_workers"."worker_id" = "workers"."id" WHERE (workers.manager_id = 1) AND (vacation_requests.status = 'approved') ORDER BY created_at ASC LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/managers/workerdetails/1" for 127.0.0.1 at 2021-04-07 08:20:25 -0600
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sksam/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/managers/workerdetails/1"):
+  
+actionpack (5.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.5) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-04-07 08:20:25 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.5) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/managers/worker_details/1" for 127.0.0.1 at 2021-04-07 08:20:33 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/managers/worker_details/1"):
+  
+actionpack (5.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.5) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/api/v1/managers/worker_details/1" for 127.0.0.1 at 2021-04-07 08:20:50 -0600
+Processing by Api::V1::ManagersController#worker_details as HTML
+  Parameters: {"worker_id"=>"1"}
+  [1m[36mWorker Load (0.8ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:9
+Completed 200 OK in 27ms (Views: 0.8ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/api/v1/managers/worker_details/1" for 127.0.0.1 at 2021-04-07 08:21:25 -0600
+Processing by Api::V1::ManagersController#worker_details as HTML
+  Parameters: {"worker_id"=>"1"}
+  [1m[36mWorker Load (0.2ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:9
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 6.4ms)
+
+
+  
+NameError (uninitialized constant Api::V1::ManagersController::WorkerOverview):
+  
+app/controllers/api/v1/managers_controller.rb:11:in `worker_details'
+Started GET "/api/v1/managers/worker_details/1" for 127.0.0.1 at 2021-04-07 08:22:01 -0600
+Processing by Api::V1::ManagersController#worker_details as HTML
+  Parameters: {"worker_id"=>"1"}
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:9
+Completed 200 OK in 20ms (Views: 0.2ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/api/v1/managers/1/requests/2?status=approved" for 127.0.0.1 at 2021-04-07 08:30:01 -0600
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sksam/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/managers/1/requests/2"):
+  
+actionpack (5.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.5) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started PATCH "/api/v1/managers/1/requests/2?status=approved" for ::1 at 2021-04-07 08:30:31 -0600
+  
+SyntaxError (/Users/sksam/township_holiday_plan/holiday-plans-rdukam/holiday-plans/app/controllers/api/v1/managers_controller.rb:19: syntax error, unexpected tLABEL
+    render json: status: :updated
+                 ^~~~~~~):
+  
+app/controllers/api/v1/managers_controller.rb:19: syntax error, unexpected tLABEL
+Started PATCH "/api/v1/managers/1/requests/2?status=approved" for ::1 at 2021-04-07 08:31:48 -0600
+  
+SyntaxError (/Users/sksam/township_holiday_plan/holiday-plans-rdukam/holiday-plans/app/controllers/api/v1/managers_controller.rb:19: syntax error, unexpected '}', expecting =>
+...updated to #{params[:status]}"}, status: 204
+...                              ^):
+  
+app/controllers/api/v1/managers_controller.rb:19: syntax error, unexpected '}', expecting =>
+Started PATCH "/api/v1/managers/1/requests/2?status=approved" for ::1 at 2021-04-07 08:32:38 -0600
+Processing by Api::V1::ManagersController#approve_vacation_request as */*
+  Parameters: {"status"=>"approved", "id"=>"1", "vacation_request_id"=>"2"}
+  [1m[36mVacationRequest Load (2.4ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:15
+Completed 404 Not Found in 25ms (ActiveRecord: 11.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find VacationRequest with 'id'=vacation_request_id):
+  
+app/controllers/api/v1/managers_controller.rb:15:in `approve_vacation_request'
+Started PATCH "/api/v1/managers/1/requests/2?status=approved" for ::1 at 2021-04-07 08:33:03 -0600
+Processing by Api::V1::ManagersController#approve_vacation_request as */*
+  Parameters: {"status"=>"approved", "id"=>"1", "vacation_request_id"=>"2"}
+  [1m[36mVacationRequest Load (0.4ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:15
+  [1m[36mManager Load (0.5ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mWorker Load (0.9ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mVacationRequest Update (7.4ms)[0m  [1m[33mUPDATE "vacation_requests" SET "status" = $1, "resolved_by" = $2, "updated_at" = $3 WHERE "vacation_requests"."id" = $4[0m  [["status", "approved"], ["resolved_by", 1], ["updated_at", "2021-04-07 14:33:03.811375"], ["id", 2]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+Completed 204 No Content in 72ms (Views: 0.4ms | ActiveRecord: 23.3ms)
+
+
+Started PATCH "/api/v1/managers/1/requests/2?status=approved" for ::1 at 2021-04-07 08:33:17 -0600
+Processing by Api::V1::ManagersController#approve_vacation_request as */*
+  Parameters: {"status"=>"approved", "id"=>"1", "vacation_request_id"=>"2"}
+  [1m[36mVacationRequest Load (0.3ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:15
+  [1m[36mManager Load (0.2ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mWorker Load (0.2ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+Completed 204 No Content in 4ms (Views: 0.1ms | ActiveRecord: 0.9ms)
+
+
+Started PATCH "/api/v1/managers/1/requests/2?status=approved" for ::1 at 2021-04-07 08:34:06 -0600
+Processing by Api::V1::ManagersController#approve_vacation_request as */*
+  Parameters: {"status"=>"approved", "id"=>"1", "vacation_request_id"=>"2"}
+  [1m[36mVacationRequest Load (0.3ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:15
+  [1m[36mManager Load (0.2ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mWorker Load (0.2ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+Completed 204 No Content in 36ms (Views: 0.1ms | ActiveRecord: 13.2ms)
+
+
+Started PATCH "/api/v1/managers/1/requests/2?status=approved" for ::1 at 2021-04-07 08:34:54 -0600
+Processing by Api::V1::ManagersController#approve_vacation_request as */*
+  Parameters: {"status"=>"approved", "id"=>"1", "vacation_request_id"=>"2"}
+  [1m[36mVacationRequest Load (0.2ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:15
+  [1m[36mManager Load (0.2ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mWorker Load (0.2ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+Completed 204 No Content in 41ms (Views: 0.2ms | ActiveRecord: 13.4ms)
+
+
+  [1m[36mManager Load (0.4ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" ORDER BY "managers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (8.8ms)[0m  [1m[34mSELECT d1.* FROM vacation_requests d1 WHERE EXISTS(
+      SELECT 1 FROM vacation_requests d2 WHERE
+      tstzrange(d2.start_date, d2.end_date, '[]') &&
+      tstzrange(d1.start_date, d1.end_date, '[]')
+      AND d2.id <> d1.id
+      );[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT d1.* FROM vacation_requests d1 WHERE EXISTS(
+      SELECT 1 FROM vacation_requests d2 WHERE
+      tstzrange(d2.start_date, d2.end_date, '[]') &&
+      tstzrange(d1.start_date, d1.end_date, '[]')
+      AND d2.id <> d1.id
+      );[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT d1.* FROM vacation_requests d1 WHERE EXISTS(
+      SELECT 1 FROM vacation_requests d2 WHERE
+      tstzrange(d2.start_date, d2.end_date, '[]') &&
+      tstzrange(d1.start_date, d1.end_date, '[]')
+      AND d2.id <> d1.id
+      );[0m
+  [1m[36mManager Load (0.4ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" ORDER BY "managers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT day_1.* FROM vacation_requests day_1 WHERE EXISTS(
+      SELECT 1 FROM vacation_requests day_2 WHERE
+      tstzrange(day_2.start_date, day_2.end_date, '[]') &&
+      tstzrange(day_1.start_date, day_1.end_date, '[]')
+      AND day_2.id <> day_1.id
+      );[0m
+Started GET "/api/v1/managers/overlapping_requests" for ::1 at 2021-04-07 08:46:23 -0600
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sksam/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::ManagersController#get_overlapping_requests as */*
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT day_1.* FROM vacation_requests day_1 WHERE EXISTS(
+      SELECT 1 FROM vacation_requests day_2 WHERE
+      tstzrange(day_2.start_date, day_2.end_date, '[]') &&
+      tstzrange(day_1.start_date, day_1.end_date, '[]')
+      AND day_2.id <> day_1.id
+      );[0m
+  ↳ app/models/manager.rb:25
+Completed 200 OK in 7ms (Views: 0.7ms | ActiveRecord: 1.2ms)
+
+
+  [1m[35m (8.9ms)[0m  [1m[34mSELECT day_1.* FROM vacation_requests day_1 WHERE EXISTS(
+      SELECT 1 FROM vacation_requests day_2 WHERE
+      tstzrange(day_2.start_date, day_2.end_date, '[]') &&
+      tstzrange(day_1.start_date, day_1.end_date, '[]')
+      AND day_2.id <> day_1.id
+      );[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT day_1.* FROM vacation_requests day_1 WHERE EXISTS(
+      SELECT 1 FROM vacation_requests day_2 WHERE
+      tstzrange(day_2.start_date, day_2.end_date, '[]') &&
+      tstzrange(day_1.start_date, day_1.end_date, '[]')
+      AND day_2.id <> day_1.id
+      );[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT day_1.* FROM vacation_requests day_1 WHERE EXISTS(
+      SELECT 1 FROM vacation_requests day_2 WHERE
+      tstzrange(day_2.start_date, day_2.end_date, '[]') &&
+      tstzrange(day_1.start_date, day_1.end_date, '[]')
+      AND day_2.id <> day_1.id
+      );[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT day_1.* FROM vacation_requests day_1 WHERE EXISTS(
+      SELECT 1 FROM vacation_requests day_2 WHERE
+      tstzrange(day_2.start_date, day_2.end_date, '[]') &&
+      tstzrange(day_1.start_date, day_1.end_date, '[]')
+      AND day_2.id <> day_1.id
+      );[0m
+  [1m[36mVacationRequest Load (6.7ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" ORDER BY "vacation_requests"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mVacationRequest Load (11.5ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE (start_date >= '2021-04-27 00:00:00' && start_date <= '2021-05-04 00:00:00' && end_date >= '2021-04-27 00:00:00' && end_date <= '2021-05-04 00:00:00') LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mVacationRequest Load (1.0ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE (vacation_requests.start_date >= '2021-04-27 00:00:00' && vacation_requests.start_date <= '2021-05-04 00:00:00' && vacation_requests.end_date >= '2021-04-27 00:00:00' && vacation_requests.end_date <= '2021-05-04 00:00:00') LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mVacationRequest Load (0.6ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" ORDER BY "vacation_requests"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mVacationRequest Load (7.4ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE ((start_date >= '2021-04-27 00:00:00' AND end_date <= '2021-04-27 00:00:00') OR (start_date >= '2021-05-04 00:00:00' AND end_date <= '2021-05-04 00:00:00')) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mVacationRequest Load (0.9ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" ORDER BY "vacation_requests"."id" ASC LIMIT $1[0m  [["LIMIT", 2]]
+  [1m[36mVacationRequest Load (0.7ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" ORDER BY "vacation_requests"."id" ASC LIMIT $1[0m  [["LIMIT", 2]]
+  [1m[36mVacationRequest Load (0.8ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE ((start_date >= '2021-04-29 00:00:00' AND end_date <= '2021-04-29 00:00:00') OR (start_date >= '2021-05-06 00:00:00' AND end_date <= '2021-05-06 00:00:00')) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mVacationRequest Load (0.4ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" ORDER BY "vacation_requests"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mVacationRequest Load (0.8ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE ((start_date >= '2021-04-27 00:00:00' AND start_date <= '2021-05-04 00:00:00') OR (end_date >= '2021-05-04 00:00:00' AND end_date <= '2021-05-04 00:00:00')) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (5.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "vacation_requests" WHERE ((start_date >= '2021-04-27 00:00:00' AND start_date <= '2021-05-04 00:00:00') OR (end_date >= '2021-05-04 00:00:00' AND end_date <= '2021-05-04 00:00:00'))[0m
+  [1m[36mVacationRequest Load (0.8ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE ((start_date >= '2021-04-27 00:00:00' AND start_date <= '2021-05-04 00:00:00') OR (end_date >= '2021-05-04 00:00:00' AND end_date <= '2021-05-04 00:00:00')) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mVacationRequest Load (0.9ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE ((start_date >= '2021-04-27 00:00:00' AND start_date <= '2021-05-04 00:00:00') OR (end_date >= '2021-05-04 00:00:00' AND end_date <= '2021-05-04 00:00:00')) AND (id <> 1) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "vacation_requests" WHERE ((start_date >= '2021-04-27 00:00:00' AND start_date <= '2021-05-04 00:00:00') OR (end_date >= '2021-05-04 00:00:00' AND end_date <= '2021-05-04 00:00:00')) AND (id <> 1)[0m
+Started GET "/api/v1/managers/overlapping_requests/1" for ::1 at 2021-04-08 06:04:52 -0600
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sksam/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::ManagersController#get_overlapping_requests as */*
+  Parameters: {"vacation_request_id"=>"1"}
+Completed 404 Not Found in 13ms (ActiveRecord: 6.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find VacationRequest without an ID):
+  
+app/controllers/api/v1/managers_controller.rb:23:in `get_overlapping_requests'
+Started GET "/api/v1/managers/overlapping_requests/1" for ::1 at 2021-04-08 06:05:16 -0600
+Processing by Api::V1::ManagersController#get_overlapping_requests as */*
+  Parameters: {"vacation_request_id"=>"1"}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find VacationRequest without an ID):
+  
+app/controllers/api/v1/managers_controller.rb:23:in `get_overlapping_requests'
+Started GET "/api/v1/managers/overlapping_requests/1" for ::1 at 2021-04-08 06:05:53 -0600
+Processing by Api::V1::ManagersController#get_overlapping_requests as */*
+  Parameters: {"vacation_request_id"=>"1"}
+  [1m[36mVacationRequest Load (0.9ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:23
+  [1m[36mVacationRequest Load (0.5ms)[0m  [1m[34mSELECT "vacation_requests".* FROM "vacation_requests" WHERE ((start_date >= '2021-04-27 00:00:00' AND start_date <= '2021-05-04 00:00:00') OR (end_date >= '2021-05-04 00:00:00' AND end_date <= '2021-05-04 00:00:00')) AND (id <> 1)[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:28
+Completed 200 OK in 28ms (Views: 1.0ms | ActiveRecord: 6.8ms)
+
+
+Started PATCH "/api/v1/managers/1/requests/1?status=%22approved%22" for ::1 at 2021-04-08 06:09:06 -0600
+Processing by Api::V1::ManagersController#approve_vacation_request as */*
+  Parameters: {"status"=>"\"approved\"", "id"=>"1", "vacation_request_id"=>"1"}
+  [1m[36mVacationRequest Load (0.3ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:15
+  [1m[36mManager Load (1.2ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mWorker Load (2.1ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mVacationRequest Update (9.4ms)[0m  [1m[33mUPDATE "vacation_requests" SET "status" = $1, "resolved_by" = $2, "updated_at" = $3 WHERE "vacation_requests"."id" = $4[0m  [["status", "\"approved\""], ["resolved_by", 1], ["updated_at", "2021-04-08 12:09:06.928627"], ["id", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+Completed 204 No Content in 70ms (Views: 0.1ms | ActiveRecord: 28.0ms)
+
+
+Started PATCH "/api/v1/managers/1/requests/1?status=%22approved%22" for ::1 at 2021-04-08 06:09:48 -0600
+Processing by Api::V1::ManagersController#approve_vacation_request as */*
+  Parameters: {"status"=>"\"approved\"", "id"=>"1", "vacation_request_id"=>"1"}
+  [1m[36mVacationRequest Load (0.2ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:15
+  [1m[36mManager Load (0.2ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mWorker Load (0.3ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+Completed 204 No Content in 39ms (Views: 0.1ms | ActiveRecord: 12.8ms)
+
+
+Started PATCH "/api/v1/managers/1/requests/1?status=%22approved%22" for ::1 at 2021-04-08 06:10:52 -0600
+Processing by Api::V1::ManagersController#approve_vacation_request as */*
+  Parameters: {"status"=>"\"approved\"", "id"=>"1", "vacation_request_id"=>"1"}
+  [1m[36mVacationRequest Load (0.2ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:15
+  [1m[36mManager Load (0.2ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+Completed 204 No Content in 42ms (Views: 0.1ms | ActiveRecord: 13.0ms)
+
+
+Started PATCH "/api/v1/managers/1/requests/1?status=%22approved%22" for ::1 at 2021-04-08 06:11:42 -0600
+Processing by Api::V1::ManagersController#approve_vacation_request as */*
+  Parameters: {"status"=>"\"approved\"", "id"=>"1", "vacation_request_id"=>"1"}
+  [1m[36mVacationRequest Load (0.2ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:15
+  [1m[36mManager Load (0.2ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mWorker Load (0.2ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+Completed 204 No Content in 36ms (Views: 0.1ms | ActiveRecord: 12.0ms)
+
+
+Started PATCH "/api/v1/managers/1/requests/1?status=%22approved%22" for ::1 at 2021-04-08 06:11:42 -0600
+Processing by Api::V1::ManagersController#approve_vacation_request as */*
+  Parameters: {"status"=>"\"approved\"", "id"=>"1", "vacation_request_id"=>"1"}
+  [1m[36mVacationRequest Load (0.3ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:15
+  [1m[36mManager Load (0.2ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mWorker Load (0.2ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+Completed 204 No Content in 4ms (Views: 0.1ms | ActiveRecord: 0.8ms)
+
+
+Started PATCH "/api/v1/managers/1/requests/1?status=%22approved%22" for ::1 at 2021-04-08 06:12:51 -0600
+Processing by Api::V1::ManagersController#approve_vacation_request as */*
+  Parameters: {"status"=>"\"approved\"", "id"=>"1", "vacation_request_id"=>"1"}
+  [1m[36mVacationRequest Load (0.1ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:15
+  [1m[36mManager Load (0.2ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mWorker Load (0.3ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+Completed 204 No Content in 34ms (Views: 0.1ms | ActiveRecord: 12.0ms)
+
+
+Started PATCH "/api/v1/managers/1/requests/1?status=%22approved%22" for ::1 at 2021-04-08 06:14:33 -0600
+Processing by Api::V1::ManagersController#approve_vacation_request as */*
+  Parameters: {"status"=>"\"approved\"", "id"=>"1", "vacation_request_id"=>"1"}
+  [1m[36mVacationRequest Load (0.1ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:15
+  [1m[36mManager Load (0.1ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mWorker Load (0.1ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+Completed 204 No Content in 36ms (Views: 0.1ms | ActiveRecord: 12.0ms)
+
+
+Started PATCH "/api/v1/managers/1/requests/1?status=%22approved%22" for ::1 at 2021-04-08 06:14:34 -0600
+Processing by Api::V1::ManagersController#approve_vacation_request as */*
+  Parameters: {"status"=>"\"approved\"", "id"=>"1", "vacation_request_id"=>"1"}
+  [1m[36mVacationRequest Load (0.2ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:15
+  [1m[36mManager Load (0.1ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mWorker Load (0.1ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+Completed 204 No Content in 3ms (Views: 0.1ms | ActiveRecord: 0.7ms)
+
+
+Started PATCH "/api/v1/managers/1/requests/1?status=%22approved%22" for ::1 at 2021-04-08 06:14:51 -0600
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sksam/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::ManagersController#approve_vacation_request as */*
+  Parameters: {"status"=>"\"approved\"", "id"=>"1", "vacation_request_id"=>"1"}
+  [1m[36mVacationRequest Load (0.6ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:15
+  [1m[36mManager Load (0.3ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+Completed 204 No Content in 48ms (Views: 0.1ms | ActiveRecord: 14.4ms)
+
+
+Started PATCH "/api/v1/managers/1/requests/1?status=%22approved%22" for ::1 at 2021-04-08 06:15:54 -0600
+Processing by Api::V1::ManagersController#approve_vacation_request as */*
+  Parameters: {"status"=>"\"approved\"", "id"=>"1", "vacation_request_id"=>"1"}
+  [1m[36mVacationRequest Load (0.2ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:15
+  [1m[36mManager Load (0.3ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mWorker Load (0.2ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+Completed 204 No Content in 33ms (Views: 0.1ms | ActiveRecord: 12.3ms)
+
+
+Started PATCH "/api/v1/managers/1/requests/1?status=%22approved%22" for ::1 at 2021-04-08 06:16:25 -0600
+Processing by Api::V1::ManagersController#approve_vacation_request as */*
+  Parameters: {"status"=>"\"approved\"", "id"=>"1", "vacation_request_id"=>"1"}
+  [1m[36mVacationRequest Load (0.2ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:15
+  [1m[36mManager Load (0.2ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mWorker Load (0.3ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+Completed 200 OK in 37ms (Views: 0.1ms | ActiveRecord: 12.8ms)
+
+
+Started PATCH "/api/v1/managers/1/requests/1?status=%22approved%22" for ::1 at 2021-04-08 06:16:47 -0600
+Processing by Api::V1::ManagersController#approve_vacation_request as */*
+  Parameters: {"status"=>"\"approved\"", "id"=>"1", "vacation_request_id"=>"1"}
+  [1m[36mVacationRequest Load (0.2ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:15
+  [1m[36mManager Load (0.2ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mWorker Load (0.2ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+Completed 200 OK in 35ms (Views: 0.1ms | ActiveRecord: 13.2ms)
+
+
+Started PATCH "/api/v1/managers/1/requests/1?status=%22approved%22" for ::1 at 2021-04-08 06:17:22 -0600
+Processing by Api::V1::ManagersController#approve_vacation_request as */*
+  Parameters: {"status"=>"\"approved\"", "id"=>"1", "vacation_request_id"=>"1"}
+  [1m[36mVacationRequest Load (0.2ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:15
+  [1m[36mManager Load (0.2ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[36mWorker Load (0.4ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:17
+Completed 200 OK in 39ms (Views: 0.1ms | ActiveRecord: 13.4ms)
+
+
+Started GET "/api/v1/managers/1/vacation_requests" for ::1 at 2021-04-08 06:26:35 -0600
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sksam/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::ManagersController#vacation_requests as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mManager Load (0.6ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/facades/managers_facade.rb:4
+  [1m[36mVacationRequest Load (5.1ms)[0m  [1m[34mSELECT DISTINCT "vacation_requests".* FROM "vacation_requests" INNER JOIN "workers" ON "workers"."id" = "vacation_requests"."worker_id" INNER JOIN "vacation_requests" "vacation_requests_workers" ON "vacation_requests_workers"."worker_id" = "workers"."id" WHERE (workers.manager_id = 1) ORDER BY created_at ASC[0m
+  ↳ app/facades/managers_facade.rb:6
+Completed 200 OK in 61ms (Views: 0.4ms | ActiveRecord: 17.9ms)
+
+
+Started GET "/api/v1/managers/worker_details/1" for ::1 at 2021-04-08 06:28:22 -0600
+Processing by Api::V1::ManagersController#worker_details as */*
+  Parameters: {"worker_id"=>"1"}
+  [1m[36mWorker Load (0.2ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:10
+Completed 200 OK in 17ms (Views: 0.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/workers/1/vacation_requests" for ::1 at 2021-04-08 10:33:11 -0600
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sksam/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::WorkersController#vacation_requests as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mWorker Load (6.3ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/facades/workers_facade.rb:4
+  [1m[36mVacationRequest Load (1.0ms)[0m  [1m[34mSELECT "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."worker_id" = $1 ORDER BY created_at ASC[0m  [["worker_id", 1]]
+  ↳ app/facades/workers_facade.rb:6
+Completed 200 OK in 58ms (Views: 0.9ms | ActiveRecord: 18.5ms)
+
+
+Started GET "/api/v1/workers/1/vacation_days" for ::1 at 2021-04-08 10:33:30 -0600
+Processing by Api::V1::WorkersController#vacation_days as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mWorker Load (0.3ms)[0m  [1m[34mSELECT  "workers".* FROM "workers" WHERE "workers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/facades/workers_facade.rb:13
+Completed 200 OK in 17ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/managers/overlapping_requests/1" for ::1 at 2021-04-08 10:33:40 -0600
+Processing by Api::V1::ManagersController#get_overlapping_requests as */*
+  Parameters: {"vacation_request_id"=>"1"}
+  [1m[36mVacationRequest Load (0.2ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:25
+  [1m[36mVacationRequest Load (0.5ms)[0m  [1m[34mSELECT "vacation_requests".* FROM "vacation_requests" WHERE ((start_date >= '2021-04-27 00:00:00' AND start_date <= '2021-05-04 00:00:00') OR (end_date >= '2021-04-27 00:00:00' AND end_date <= '2021-05-04 00:00:00')) AND (id <> 1)[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:30
+Completed 200 OK in 8ms (Views: 2.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/managers/overlapping_requests/1" for ::1 at 2021-04-08 10:33:42 -0600
+Processing by Api::V1::ManagersController#get_overlapping_requests as */*
+  Parameters: {"vacation_request_id"=>"1"}
+  [1m[36mVacationRequest Load (0.3ms)[0m  [1m[34mSELECT  "vacation_requests".* FROM "vacation_requests" WHERE "vacation_requests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/managers_controller.rb:25
+  [1m[36mVacationRequest Load (0.5ms)[0m  [1m[34mSELECT "vacation_requests".* FROM "vacation_requests" WHERE ((start_date >= '2021-04-27 00:00:00' AND start_date <= '2021-05-04 00:00:00') OR (end_date >= '2021-04-27 00:00:00' AND end_date <= '2021-05-04 00:00:00')) AND (id <> 1)[0m
+  ↳ app/controllers/api/v1/managers_controller.rb:30
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/managers/1/vacation_requests" for ::1 at 2021-04-08 10:35:10 -0600
+Processing by Api::V1::ManagersController#vacation_requests as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mManager Load (1.9ms)[0m  [1m[34mSELECT  "managers".* FROM "managers" WHERE "managers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/facades/managers_facade.rb:4
+  [1m[36mVacationRequest Load (1.5ms)[0m  [1m[34mSELECT DISTINCT "vacation_requests".* FROM "vacation_requests" INNER JOIN "workers" ON "workers"."id" = "vacation_requests"."worker_id" INNER JOIN "vacation_requests" "vacation_requests_workers" ON "vacation_requests_workers"."worker_id" = "workers"."id" WHERE (workers.manager_id = 1) ORDER BY created_at ASC[0m
+  ↳ app/facades/managers_facade.rb:6
+Completed 200 OK in 31ms (Views: 0.3ms | ActiveRecord: 9.2ms)
+
+
